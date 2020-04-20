@@ -1,0 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package algorithm;
+
+/**
+ *
+ * @author Neil Davies
+ */
+public class negamax {
+    
+    int negaMax(PieceLocation pos, int alpha, int beta, int depth, int player) {
+    if(depth == 0)
+        return eval(pos);
+    moves = pos.generateMoves();
+    
+    foreach(I in moves) {
+        pos.makeMove(I);
+        int value = -negaMax(pos, -beta, -alpha, depth - 1, otherPlayer(player));
+        pos.undoMove(I);
+        if(value >= beta)
+            return beta;
+        else if(value > alpha)
+            alpha = value;
+    }
+    return alpha;
+}
+Neil Davies
+Neil
+    
+}
